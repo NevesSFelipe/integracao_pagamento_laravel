@@ -50,6 +50,7 @@ class PagCompletoController extends Controller
             )->post($this->endpoint . $this->token);
 
             $this->update_order_status($row->id_pedido, $return_api);
+            $this->update_intermediate_return($row->id_pedido, $return_api);
     
         }
     }
@@ -79,6 +80,23 @@ class PagCompletoController extends Controller
                     ->update(["id_situacao" => 3])
                 ;
             }
+        }
+    }
+
+    private function update_intermediate_return(int $id_pedido, string $return_api)
+    {
+        $array_return_api = json_decode($return_api, true);
+
+        if(!$array_return_api['Error']) {
+
+            $sql = 
+                DB::table('pedidos_pagamentos')
+                ->where("id", "$id_pedido")
+                ->update(
+                    ["retorno_intermediador" => $array_return_api['Transaction_code'] . " - " . $array_return_api['Message']],
+                    ["data_processamento" => date('d-m-Y')]
+                )
+            ;
         }
     }
 
