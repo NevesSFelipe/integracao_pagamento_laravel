@@ -17,20 +17,9 @@ class GatewaysSeeder extends Seeder
     {
         $gateways = [
             
-            [
-                1,
-                'PAGCOMPLETO','https://api11.ecompleto.com.br/'
-            ],
-
-            [
-                2,
-                'CIELO','https://api.cielo.com.br/v1/transactions/'
-            ],
-
-            [
-                3,
-                'PAGSEGURO','https://api.pagseguro.com.br/transactions/'
-            ]
+            array(1,'PAGCOMPLETO','https://api11.ecompleto.com.br/'),
+            array(2,'CIELO','https://api.cielo.com.br/v1/transactions/'),
+            array(3,'PAGSEGURO','https://api.pagseguro.com.br/transactions/')
 
         ];
 

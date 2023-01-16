@@ -7,11 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    const AGUARDANDO_PAGAMENTO = 1;
+    const PAGAMENTO_EFETUADO = 2;
+    const PEDIDO_CANCELADO = 3;
+
     public function index()
     {
-        $awaiting_payment = $this->show_orders_by_status(1);
-        $identified_payment = $this->show_orders_by_status(2);
-        $canceled_order = $this->show_orders_by_status(3);
+        $awaiting_payment = $this->show_orders_by_status(self::AGUARDANDO_PAGAMENTO);
+        $identified_payment = $this->show_orders_by_status(self::PAGAMENTO_EFETUADO);
+        $canceled_order = $this->show_orders_by_status(self::PEDIDO_CANCELADO);
         return view('pagCompleto.index', compact('awaiting_payment', 'identified_payment', 'canceled_order'));
     }
 

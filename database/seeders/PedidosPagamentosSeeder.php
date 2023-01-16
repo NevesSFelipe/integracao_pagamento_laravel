@@ -17,6 +17,7 @@ class PedidosPagamentosSeeder extends Seeder
     public function run()
     {
         $pedidos_pagamentos = [
+
             array(103013,98302,3,4,null,null,'5236387041984690','Elisa Adriana Barbosa','319','2022-08'),
             array(103014,98303,3,2,null,null,'5372472213342610','Renato Ryan','848','2022-03'),
             array(103015,98304,1,1,null,null,null,null,null,null),
@@ -26,6 +27,7 @@ class PedidosPagamentosSeeder extends Seeder
             array(103019,98308,3,5,null,null,'5167913943407160','Kevin Pedro','441','2022-10'),
             array(103020,98309,2,1,null,null,null,null,null,null),
             array(103021,98310,1,1,null,null,null,null,null,null)
+        
         ];
 
         foreach($pedidos_pagamentos as $pdp) {

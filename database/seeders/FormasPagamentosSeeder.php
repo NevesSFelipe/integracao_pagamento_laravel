@@ -16,21 +16,11 @@ class FormasPagamentosSeeder extends Seeder
     public function run()
     {
         $formas_pagamento = [
-            [
-                1,
-                'Boleto Bancário'
-            ],
 
-            [
-                2,
-                'Depósito Bancário'
-            
-            ],
-
-            [
-                3,
-                'Cartão de Crédito'
-            ]
+            array(1,'Boleto Bancário'),
+            array(2,'Depósito Bancário'),
+            array(3,'Cartão de Crédito')
+        
         ];
 
         foreach($formas_pagamento as $pgto) {

@@ -17,40 +17,12 @@ class LojasGatewaySeeder extends Seeder
     {
         $lojas_gateway = [
             
-            [
-                1,
-                90,
-                1
-            ],
-
-            [
-                2,
-                92,
-                2
-            ],
-
-            [
-                3,
-                115,1
-            ],
-
-            [
-                4,
-                98,
-                1
-            ]
-            ,
-            [
-                5,
-                97,
-                1
-            ],
-
-            [
-                6,
-                94,
-                1
-            ]
+            array(1,90,1),
+            array(2,92,2),
+            array(3,115,1),
+            array(4,98,1),
+            array(5,97,1),
+            array(6,94,1)
 
         ];
 

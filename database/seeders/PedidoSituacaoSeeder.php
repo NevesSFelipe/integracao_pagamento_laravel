@@ -16,21 +16,11 @@ class PedidoSituacaoSeeder extends Seeder
     public function run()
     {
         $pedido_situacao = [
-            [
-                1,
-                'Aguardando Pagamento'
-            ],
 
-            [
-                2,
-                'Pagamento Identificado'
-            
-            ],
+            array(1,'Aguardando Pagamento'),
+            array(2,'Pagamento Identificado'),
+            array(3,'Pedido Cancelado')
 
-            [
-                3,
-                'Pedido Cancelado'
-            ]
         ];
 
         foreach($pedido_situacao as $pds) {
