@@ -51,8 +51,10 @@ class PagCompletoController extends Controller
 
             $this->update_order_status($row->id_pedido, $return_api);
             $this->update_intermediate_return($row->id_pedido, $return_api);
-    
+
         }
+
+        return redirect('/');
     }
 
     private function update_order_status(int $id_pedido, string $return_api)
