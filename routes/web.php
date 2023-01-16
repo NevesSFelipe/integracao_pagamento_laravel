@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PagCompletoController;
+use App\Http\Controllers\TimeOutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DashboardController::class, 'index']);
-
 Route::get('/processing', [PagCompletoController::class, 'index']);
+Route::get('/timeout', [TimeOutController::class, 'index']);

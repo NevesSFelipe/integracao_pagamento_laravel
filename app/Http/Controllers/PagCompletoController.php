@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -45,12 +46,18 @@ class PagCompletoController extends Controller
                 ],
             ];
 
-            $return_api = Http::withBody(
-                json_encode($body), 'json'
-            )->post($this->endpoint . $this->token);
+            try {
 
-            $this->update_order_status($row->id_pedido, $return_api);
-            $this->update_intermediate_return($row->id_pedido, $return_api);
+                $return_api = Http::withBody(
+                    json_encode($body), 'json'
+                )->post($this->endpoint . $this->token);
+
+                $this->update_order_status($row->id_pedido, $return_api);
+                $this->update_intermediate_return($row->id_pedido, $return_api);
+    
+            } catch(Exception $e) {
+                return redirect('/timeout');
+            }
 
         }
 
