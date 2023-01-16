@@ -48,7 +48,37 @@ class PagCompletoController extends Controller
             $return_api = Http::withBody(
                 json_encode($body), 'json'
             )->post($this->endpoint . $this->token);
+
+            $this->update_order_status($row->id_pedido, $return_api);
     
+        }
+    }
+
+    private function update_order_status(int $id_pedido, string $return_api)
+    {
+        $array_return_api = json_decode($return_api, true);
+        
+        if(!$array_return_api['Error']) {
+
+            if($array_return_api['Transaction_code'] == '00') {
+                $sql = 
+                    DB::table('pedidos')
+                    ->where("id", "$id_pedido")
+                    ->update(["id_situacao" => 1])
+                ;
+            }
+
+            if(
+                $array_return_api['Transaction_code'] == '02' || 
+                $array_return_api['Transaction_code'] == '03' || 
+                $array_return_api['Transaction_code'] == '04'
+            ) { 
+                $sql = 
+                    DB::table('pedidos')
+                    ->where("id", "$id_pedido")
+                    ->update(["id_situacao" => 3])
+                ;
+            }
         }
     }
 
